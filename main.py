@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def hello():
+def index():
     """Return a friendly HTTP greeting."""
     return render_template('index.html')
 

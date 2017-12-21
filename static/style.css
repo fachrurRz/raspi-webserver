@@ -1,6 +1,73 @@
-.power-btn {
-    border-radius: 50%;
-    width: 50%;
-    padding-top: 50%;
-    height: auto;
+@import url('https://fonts.googleapis.com/css?family=Bungee');
+
+body {
+    background-image: linear-gradient(135deg, rgba(0, 117, 206, 1) 0%, rgba(0, 201, 211, 1) 100%);
+    font-family: 'Bungee', cursive;
+    max-width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 5rem 10rem;
+    margin: auto;
+    text-align: center;
+}
+button {
+    font-family: 'Bungee', cursive;
+    background: #ffffff;
+    border: none;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+button:active {
+    background: #d1d1d1;
+}
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Bungee', cursive;
+}
+.title {
+    color: #ffffff;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: auto;
+}
+.grid-item {
+    padding: 0.5em;
+    font-size: 2em;
+    text-align: center;
+}
+.table-container {
+    display: grid;
+    grid-template-columns: 75% 25%;
+}
+.table-item {
+    font-size: 0.75em;
+    text-align: left;
+}
+.material-icons {
+    font-size: 2em;
+}
+h2.status-on,h2.status-off {
+    margin: 0;
+}
+.status-on {
+    background: linear-gradient(135deg, rgba(208,255,0,1) 1%,rgba(0,188,88,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.status-off {
+    background: linear-gradient(135deg, rgba(191,0,0,1) 1%,rgba(229,0,118,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        padding: 2rem;
+    }
+    .grid-item {
+        padding: 0.5em;
+        font-size: 1em;
+        text-align: center;
+    }
 }
