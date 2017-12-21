@@ -10,8 +10,23 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     """Return a friendly HTTP greeting."""
-    return render_template('index.html')
+    # getData()
+    data = {'merk': 'Panasonic', 'temperature': '29', 'humidity': '50'}
+    return render_template('index.html', data=data)
 
+@app.route('/on/')
+def turnOnAc():
+    """Turn on"""
+    # turnOn()
+    data = {'merk': 'Panasonic', 'temperature': '29', 'humidity': '50'}
+    return render_template('index.html', data=data)
+
+@app.route('/off/')
+def turnOffAc():
+    """Turn Off"""
+    # turnOff()
+    data = {'merk': 'Panasonic', 'temperature': '29', 'humidity': '50'}
+    return render_template('index.html', data=data)
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -25,4 +40,4 @@ def application_error(e):
     return 'Sorry, unexpected error: {}'.format(e), 500
 
 if __name__ == '__main__':
-    app.run(debug = True, port=8080)
+    app.run(debug = True, port=5000)

@@ -13,27 +13,33 @@
         <h3 class="title grid-item">Informasi Perangkat</h3>
         <div class="grid-item">
             <div class="table-container">
-                <div class="table-item">Merk AC</div>
-                <div class="table-item">Changchong</div>
+                <div class="table-item">Merek AC</div>
+                <div class="table-item">{{ data.merk }}</div>
             </div>
             <div class="table-container">
                 <div class="table-item">Current Temperature</div>
-                <div class="table-item">30 C</div>
+                <div class="table-item">{{ data.temperature }} C</div>
             </div>
             <div class="table-container">
                 <div class="table-item">Current Humidity</div>
-                <div class="table-item">90 %</div>
+                <div class="table-item">{{ data.humidity }} %</div>
             </div>
         </div>
         <div class="grid-item">
-            <button class="power-btn" onclick="changeStatus()">
-                <i class="material-icons">power_settings_new</i>
-                <h2 id="status" class="status-on">ON</h2>
-            </button>
+            <a href="/on/">
+                <button class="power-btn">
+                    <i class="material-icons">power_settings_new</i>
+                    <h2 id="status" class="status-on">ON</h2>
+                </button>
+            </a>
+            <a href="/off/">
+                <button class="power-btn">
+                    <i class="material-icons">power_settings_new</i>
+                    <h2 id="status" class="status-off">OFF</h2>
+                </button>
+            </a>
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.1.8/dist/semantic.min.js"></script>
     <script>
         function changeStatus() {
             const status = document.getElementById("status");
