@@ -6,7 +6,7 @@ app = Flask(__name__)
 # Note: We don't need to call run() since our application is embedded within
 # the App Engine WSGI application server.
 
-global_data = {'humidity': '0', 'temperature': '0'}
+global_data = {'humidity': '10', 'temperature': '60'}
 
 @app.route('/')
 def index():
@@ -31,7 +31,7 @@ def turnOffAc():
 
 
 @app.route('/update', methods=['POST'])
-def create_task():
+def update():
     humidity = request.form['humidity']
     temperature = request.form['temperature']
 
@@ -39,6 +39,11 @@ def create_task():
     global_data['temperature'] = temperature
 
     return jsonify({'data': global_data}), 201
+
+
+@app.route('/get-current', methods=['GET'])
+def get_current():
+    return jsonify({'data': global_data}), 200
 
 
 @app.errorhandler(404)

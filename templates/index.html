@@ -8,6 +8,18 @@
     <link rel= "stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
+<script src="static/jquery-3.2.1.min.js"></script>
+<script>
+$(document).ready(function(){
+    window.setInterval(function(){
+        $.get("http://localhost/get-current", function(data, status){
+            document.getElementById("current-humidity").innerText = data.data.humidity + " %";
+            document.getElementById("current-temperature").innerText = data.data.temperature + " C";
+
+        });
+    }, 2000);
+});
+</script>
 <body>
     <div class="grid-container">
         <h3 class="title grid-item">Informasi Perangkat</h3>
@@ -18,28 +30,31 @@
             </div>
             <div class="table-container">
                 <div class="table-item">Current Temperature</div>
-                <div class="table-item">{{ data.temperature }} C</div>
+                <div class="table-item" id="current-temperature">{{ data.temperature }} C</div>
             </div>
             <div class="table-container">
                 <div class="table-item">Current Humidity</div>
-                <div class="table-item">{{ data.humidity }} %</div>
+                <div class="table-item" id="current-humidity">{{ data.humidity }} %</div>
             </div>
         </div>
         <div class="grid-item">
             <a href="/on/">
                 <button class="power-btn">
-                    <i class="material-icons">power_settings_new</i>
-                    <h2 id="status" class="status-on">ON</h2>
+                    <i class="material-icons">arrow_drop_up</i>
+                    <h2 id="status" class="status-on">Inc</h2>
                 </button>
             </a>
             <a href="/off/">
                 <button class="power-btn">
-                    <i class="material-icons">power_settings_new</i>
-                    <h2 id="status" class="status-off">OFF</h2>
+                    <i class="material-icons">arrow_drop_down</i><br>
+                    <h2 id="status" class="status-off">Dec</h2>
                 </button>
             </a>
         </div>
     </div>
+    <script>
+
+    </script>
     <script>
         function changeStatus() {
             const status = document.getElementById("status");

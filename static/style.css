@@ -1,4 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Bungee');
+@font-face {
+font-family: 'Bungee';
+src: url('Bungee-Regular.ttf');
+}
 
 body {
     background-image: linear-gradient(135deg, rgba(0, 117, 206, 1) 0%, rgba(0, 201, 211, 1) 100%);
