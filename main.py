@@ -6,27 +6,40 @@ app = Flask(__name__)
 # Note: We don't need to call run() since our application is embedded within
 # the App Engine WSGI application server.
 
+global_data = {'humidity': '0', 'temperature': '0'}
 
 @app.route('/')
 def index():
     """Return a friendly HTTP greeting."""
     # getData()
-    data = {'merk': 'Panasonic', 'temperature': '29', 'humidity': '50'}
+    data = {'merk': 'Panasonic', 'temperature': global_data['temperature'], 'humidity': global_data['humidity']}
     return render_template('index.html', data=data)
 
 @app.route('/on/')
 def turnOnAc():
     """Turn on"""
     # turnOn()
-    data = {'merk': 'Panasonic', 'temperature': '29', 'humidity': '50'}
+    data = {'merk': 'Panasonic', 'temperature': global_data['temperature'], 'humidity': global_data['humidity']}
     return render_template('index.html', data=data)
 
 @app.route('/off/')
 def turnOffAc():
     """Turn Off"""
     # turnOff()
-    data = {'merk': 'Panasonic', 'temperature': '29', 'humidity': '50'}
+    data = {'merk': 'Panasonic', 'temperature': global_data['temperature'], 'humidity': global_data['humidity']}
     return render_template('index.html', data=data)
+
+
+@app.route('/update', methods=['POST'])
+def create_task():
+    humidity = request.form['humidity']
+    temperature = request.form['temperature']
+
+    global_data['humidity'] = humidity
+    global_data['temperature'] = temperature
+
+    return jsonify({'data': global_data}), 201
+
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -40,4 +53,4 @@ def application_error(e):
     return 'Sorry, unexpected error: {}'.format(e), 500
 
 if __name__ == '__main__':
-    app.run(debug = True, port=5000)
+    app.run(host="0.0.0.0", debug = True, port=5000)
